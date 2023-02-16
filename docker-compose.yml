@@ -1,0 +1,38 @@
+version: '1'
+services: #services we are running
+  employee-management-system-main: #name of our app service
+    image: 'employee_app_img:latest' #the image we are creating/pulling
+    ports: #the port we are mapping it on
+      - 9090:9090
+    build:
+      context: .
+      dockerfile: Dockerfile #the image will be created from commands listed in the Dockerfile
+    container_name: employee_app_container #name of the container
+    depends_on: #what our service depends on
+      - employees_service
+    environment: #enviroment variables, declared in app.properties in the app itself
+        SPRING_DATASOURCE_URL: jdbc:postgresql://employees_service:5432/employees_db
+        SPRING_DATASOURCE_USERNAME: postgres
+        SPRING_DATASOURCE_PASSWORD: postgres
+    networks:
+      - employees_network
+
+  employees_service: #name of our db service
+    image: 'postgres:latest' #the version of the db image we are pulling since we are using it in the app
+    restart: always
+    container_name: employees_service #name of the db container
+    ports: #the port we are mapping it on
+      - 5432:5432
+    environment: #enviroment variables needed to access db
+       POSTGRES_USER: postgres
+       POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
+    networks:
+      - employees_network
+
+volumes:
+  postgres-data:
+networks:
+  employees_network:

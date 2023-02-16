@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@Controller
+@RestController
 @RequestMapping("/")
 //Line 19 to 24 is the newly added code for swagger documentation
 @ApiResponses(value = {

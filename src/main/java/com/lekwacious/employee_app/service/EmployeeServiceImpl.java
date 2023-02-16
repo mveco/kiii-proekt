@@ -19,9 +19,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public MessageResponse createEmployee(EmployeeRequest employeeRequest) {
         Employee newEmployee = new Employee();
-        newEmployee.setFirstName(employeeRequest.getFirstName());
+        newEmployee.setFirstname(employeeRequest.getFirstName());
         newEmployee.setLastname(employeeRequest.getLastname());
-        newEmployee.setPhoneNumber(employeeRequest.getPhoneNumber());
+        newEmployee.setPhonenumber(employeeRequest.getPhoneNumber());
         newEmployee.setEmail(employeeRequest.getEmail());
         newEmployee.setSalary(employeeRequest.getSalary());
         newEmployee.setDepartment(employeeRequest.getDepartment());
@@ -37,9 +37,9 @@ public class EmployeeServiceImpl implements EmployeeService {
         throw new ResourceNotFoundException("Employee", "id", employeeId);
         }
         else
-        employee.get().setFirstName(employeeRequest.getFirstName());
+        employee.get().setFirstname(employeeRequest.getFirstName());
         employee.get().setLastname(employeeRequest.getLastname());
-        employee.get().setPhoneNumber(employeeRequest.getPhoneNumber());
+        employee.get().setPhonenumber(employeeRequest.getPhoneNumber());
         employee.get().setEmail(employeeRequest.getEmail());
         employee.get().setSalary(employeeRequest.getSalary());
         employee.get().setDepartment(employeeRequest.getDepartment());

@@ -8,9 +8,9 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    private String firstName;
+    private String firstname;
     private String lastname;
-    private String phoneNumber;
+    private String phonenumber;
     private String email;
     private double salary;
     @Enumerated(EnumType.STRING)
@@ -26,12 +26,12 @@ public class Employee {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
     public String getLastname() {
@@ -42,12 +42,12 @@ public class Employee {
         this.lastname = lastname;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getPhonenumber() {
+        return phonenumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPhonenumber(String phoneNumber) {
+        this.phonenumber = phonenumber;
     }
 
     public String getEmail() {
@@ -78,9 +78,9 @@ public class Employee {
     public String toString() {
         return "Employee{" +
                 "id=" + id +
-                ", firstName='" + firstName + '\'' +
+                ", firstName='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
+                ", phoneNumber='" + phonenumber + '\'' +
                 ", email='" + email + '\'' +
                 ", salary=" + salary +
                 ", department=" + department +
@@ -92,11 +92,11 @@ public class Employee {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return Double.compare(employee.salary, salary) == 0 && Objects.equals(id, employee.id) && Objects.equals(firstName, employee.firstName) && Objects.equals(lastname, employee.lastname) && Objects.equals(phoneNumber, employee.phoneNumber) && Objects.equals(email, employee.email) && department == employee.department;
+        return Double.compare(employee.salary, salary) == 0 && Objects.equals(id, employee.id) && Objects.equals(firstname, employee.firstname) && Objects.equals(lastname, employee.lastname) && Objects.equals(phonenumber, employee.phonenumber) && Objects.equals(email, employee.email) && department == employee.department;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastname, phoneNumber, email, salary, department);
+        return Objects.hash(id, firstname, lastname, phonenumber, email, salary, department);
     }
 }
