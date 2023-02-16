@@ -14,8 +14,6 @@ services: #services we are running
         SPRING_DATASOURCE_URL: jdbc:postgresql://employees_service:5432/employees_db
         SPRING_DATASOURCE_USERNAME: postgres
         SPRING_DATASOURCE_PASSWORD: postgres
-    networks:
-      - employees_network
 
   employees_service: #name of our db service
     image: 'postgres:latest' #the version of the db image we are pulling since we are using it in the app
@@ -29,10 +27,30 @@ services: #services we are running
     volumes:
       - postgres-data:/var/lib/postgresql/data
       - ./sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
-    networks:
-      - employees_network
+
+  prometheus:
+    image: prom/prometheus
+    restart: always
+    ports:
+      - 7070:7070
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+    depends_on:
+      - employee-management-system-main
+
+  grafana:
+    image: grafana/grafana
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    restart: always
+    ports:
+      - 3000:3000
+    volumes:
+      - grafana_storage:/var/lib/grafana
+    depends_on:
+      - employee-management-system-main
 
 volumes:
   postgres-data:
-networks:
-  employees_network:
+  grafana_storage:
+
