@@ -3,7 +3,7 @@ services: #services we are running
   employee-management-system-main: #name of our app service
     image: 'employee_app_img:latest' #the image we are creating/pulling
     ports: #the port we are mapping it on
-      - 9090:9090
+      - 9090:9099
     build:
       context: .
       dockerfile: Dockerfile #the image will be created from commands listed in the Dockerfile

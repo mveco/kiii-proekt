@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.lekwacious.employee_app.EmployeeAppApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.504 s - in com.lekwacious.employee_app.EmployeeAppApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 32.262 s - in com.lekwacious.employee_app.EmployeeAppApplicationTests
